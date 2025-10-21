@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEJARAH | Portal Sejarah Seni, Tradisi, dan Budaya</title>
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+        
+        body {
+            background-color: #f8f4e9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(94, 66, 41, 0.9), rgba(94, 66, 41, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%235e4229"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%238a6649" stroke-width="2"/></svg>');
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #8a6649;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #f8f4e9;
+        }
+        
+        .search-box {
+            display: flex;
+        }
+        
+        .search-box input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .search-box button {
+            padding: 0.5rem 1rem;
+            background-color: #5e4229;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .main-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            color: #5e4229;
+            border-bottom: 2px solid #8a6649;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .featured-article {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e0d6c8;
+            padding-bottom: 1.5rem;
+        }
+        
+        .featured-article h3 {
+            color: #5e4229;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .featured-article img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background-color: #8a6649;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .read-more:hover {
+            background-color: #5e4229;
+        }
+        
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .article-card {
+            background-color: #f8f4e9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .article-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .article-card-content {
+            padding: 1rem;
+        }
+        
+        .article-card h4 {
+            color: #5e4229;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-section h3 {
+            color: #5e4229;
+            border-bottom: 1px solid #e0d6c8;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-list, .timeline-list {
+            list-style: none;
+        }
+        
+        .category-list li, .timeline-list li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dotted #e0d6c8;
+        }
+        
+        .category-list a, .timeline-list a {
+            color: #5e4229;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .category-list a:hover, .timeline-list a:hover {
+            color: #8a6649;
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #5e4229;
+            color: #fff;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #e0d6c8;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #8a6649;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #f8f4e9;
+            color: #5e4229;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #8a6649;
+            font-size: 0.9rem;
+            color: #e0d6c8;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>SEJARAH</h1>
+            <p class="tagline">Mengungkap Masa Lalu, Memahami Masa Kini, Membentuk Masa Depan</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Sejarah Seni</a></li>
+                <li><a href="#">Tradisi & Budaya</a></li>
+                <li><a href="#">Tokoh Sejarah</a></li>
+                <li><a href="#">Peradaban Kuno</a></li>
+                <li><a href="#">Arkeologi</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Cari artikel sejarah...">
+                <button>Cari</button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <main class="main-content fade-in">
+            <h2 class="section-title">Artikel Terbaru</h2>
+            
+            <div class="featured-article">
+                <h3>Sejarah Seni Renaissance: Kelahiran Kembali Humanisme</h3>
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'><rect width='800' height='400' fill='%238a6649'/><text x='50%' y='50%' font-family='Georgia' font-size='24' fill='%23f8f4e9' text-anchor='middle'>Gambar: Karya Seni Renaissance</text></svg>" alt="Karya Seni Renaissance">
+                <p>Periode Renaissance, yang berlangsung dari abad ke-14 hingga ke-17, menandai kebangkitan kembali minat terhadap seni, sastra, dan pengetahuan klasik. Gerakan ini bermula di Italia sebelum menyebar ke seluruh Eropa, mengubah lanskap budaya Eropa secara permanen. Seniman Renaissance seperti Leonardo da Vinci, Michelangelo, dan Raphael menciptakan karya yang menekankan realisme, perspektif, dan emosi manusia.</p>
+                <p>Humanisme, filosofi inti dari Renaissance, menempatkan manusia sebagai pusat alam semesta, berbeda dengan fokus abad pertengahan pada ketuhanan. Pergeseran ini mempengaruhi semua aspek seni, dari lukisan dan patung hingga arsitektur. Karya seperti "Mona Lisa" dan langit-langit Kapel Sistina menjadi simbol abadi dari periode ini, mencerminkan pencapaian artistik yang belum pernah terjadi sebelumnya.</p>
+                <a href="#" class="read-more">Baca Selengkapnya</a>
+            </div>
+            
+            <h2 class="section-title">Artikel Lainnya</h2>
+            <div class="article-grid">
+                <div class="article-card">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect width='400' height='200' fill='%235e4229'/><text x='50%' y='50%' font-family='Georgia' font-size='18' fill='%23f8f4e9' text-anchor='middle'>Gambar: Tradisi Wayang Kulit</text></svg>" alt="Wayang Kulit">
+                    <div class="article-card-content">
+                        <h4>Wayang Kulit: Warisan Budaya Indonesia yang Abadi</h4>
+                        <p>Eksplorasi sejarah dan filosofi di balik seni pertunjukan wayang kulit yang telah diakui UNESCO sebagai Warisan Budaya Takbenda.</p>
+                        <a href="#" class="read-more">Baca</a>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect width='400' height='200' fill='%235e4229'/><text x='50%' y='50%' font-family='Georgia' font-size='18' fill='%23f8f4e9' text-anchor='middle'>Gambar: Peradaban Mesir Kuno</text></svg>" alt="Peradaban Mesir Kuno">
+                    <div class="article-card-content">
+                        <h4>Keajaiban Arsitektur Peradaban Mesir Kuno</h4>
+                        <p>Mengungkap teknologi dan makna spiritual di balik piramida, sphinx, dan kuil-kuil megah Mesir kuno.</p>
+                        <a href="#" class="read-more">Baca</a>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect width='400' height='200' fill='%235e4229'/><text x='50%' y='50%' font-family='Georgia' font-size='18' fill='%23f8f4e9' text-anchor='middle'>Gambar: Sejarah Batik</text></svg>" alt="Sejarah Batik">
+                    <div class="article-card-content">
+                        <h4>Evolusi Batik: Dari Kesenian Keraton hingga Fashion Modern</h4>
+                        <p>Perjalanan panjang batik Indonesia dari simbol status kerajaan hingga menjadi identitas budaya nasional.</p>
+                        <a href="#" class="read-more">Baca</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar fade-in">
+            <div class="sidebar-section">
+                <h3>Kategori</h3>
+                <ul class="category-list">
+                    <li><a href="#">Sejarah Seni Rupa</a></li>
+                    <li><a href="#">Sejarah Arsitektur</a></li>
+                    <li><a href="#">Tradisi & Adat Istiadat</a></li>
+                    <li><a href="#">Sejarah Musik</a></li>
+                    <li><a href="#">Peradaban Kuno</a></li>
+                    <li><a href="#">Sejarah Tekstil</a></li>
+                    <li><a href="#">Mitos & Legenda</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Linimasa Sejarah</h3>
+                <ul class="timeline-list">
+                    <li><a href="#">Zaman Prasejarah (Sebelum 3000 SM)</a></li>
+                    <li><a href="#">Peradaban Kuno (3000 SM - 500 M)</a></li>
+                    <li><a href="#">Abad Pertengahan (500 - 1500)</a></li>
+                    <li><a href="#">Renaissance (1300 - 1600)</a></li>
+                    <li><a href="#">Revolusi Industri (1760 - 1840)</a></li>
+                    <li><a href="#">Era Modern (1900 - Sekarang)</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Event Sejarah</h3>
+                <p><strong>Pameran Seni Renaissance</strong><br>
+                Museum Nasional, 15 Oktober - 20 Desember 2023</p>
+                <p><strong>Festival Tradisi Nusantara</strong><br>
+                Taman Mini Indonesia Indah, 5-12 November 2023</p>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang SEJARAH</h3>
+                <p>SEJARAH adalah portal edukasi yang didedikasikan untuk menyajikan informasi akurat dan menarik tentang berbagai aspek sejarah, termasuk seni, tradisi, budaya, dan peradaban.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontak Kami</h3>
+                <p>Email: info@sejarah.id</p>
+                <p>Telepon: (021) 1234-5678</p>
+                <p>Alamat: Jl. Sejarah No. 123, Jakarta</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Ikuti Kami</h3>
+                <div class="social-links">
+                    <a href="#">FB</a>
+                    <a href="#">TW</a>
+                    <a href="#">IG</a>
+                    <a href="#">YT</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 SEJARAH. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Animasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                fadeElements.forEach(element => {
+                    element.style.opacity = '1';
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
